@@ -37,10 +37,10 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Convert currency
-    if (path === '/convert' && event.httpMethod === 'POST') {
-      const body = JSON.parse(event.body);
-      const { from, to, amount, date } = body;
+    // Convert currency (GET with query params)
+    if (path === '/convert') {
+      const params = event.queryStringParameters || {};
+      const { from, to, amount, date } = params;
 
       // Check if historical date (past date) - not supported on free tier
       if (date) {
@@ -68,14 +68,14 @@ exports.handler = async (event, context) => {
 
       if (data.data && data.data[to]) {
         const rate = data.data[to];
-        const result = amount * rate;
+        const result = parseFloat(amount) * rate;
         return {
           statusCode: 200,
           headers,
           body: JSON.stringify({
             from,
             to,
-            amount,
+            amount: parseFloat(amount),
             rate,
             result,
             date: date || new Date().toISOString().split('T')[0]
