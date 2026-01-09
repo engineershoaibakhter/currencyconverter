@@ -67,10 +67,12 @@ export class CurrencyConverterComponent implements OnInit {
     this.loadingCurrencies = true;
     this.currencyService.getCurrencies().subscribe({
       next: (response) => {
-        if (response.data) {
-          this.currencies = Object.keys(response.data).map(key => ({
+        // Handle both formats: { data: {...} } or direct object
+        const currencyData = response.data || response;
+        if (currencyData && typeof currencyData === 'object') {
+          this.currencies = Object.keys(currencyData).map(key => ({
             code: key,
-            name: response.data[key].name
+            name: currencyData[key]?.name || key
           }));
         }
         this.loadingCurrencies = false;
