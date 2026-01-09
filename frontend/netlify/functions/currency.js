@@ -1,5 +1,5 @@
-const API_KEY = 'fca_live_79cb3ZSb187Pd03UHloNA5SO78hCJvbyoAQu126i';
-const API_BASE = 'https://api.freecurrencyapi.com/v1';
+const API_KEY = process.env.FREECURRENCY_API_KEY;
+const API_BASE = process.env.FREECURRENCY_API_BASE || 'https://api.freecurrencyapi.com/v1';
 
 exports.handler = async (event, context) => {
   const headers = {
@@ -8,6 +8,16 @@ exports.handler = async (event, context) => {
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Content-Type': 'application/json'
   };
+
+  if (!API_KEY) {
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: 'Server misconfigured: missing FREECURRENCY_API_KEY env var'
+      })
+    };
+  }
 
   // Handle CORS preflight
   if (event.httpMethod === 'OPTIONS') {
