@@ -5,6 +5,12 @@ import { CurrencyService } from './currency.service';
 export class CurrencyController {
   constructor(private readonly currencyService: CurrencyService) {}
 
+  // Health check endpoint for UptimeRobot (keeps server awake)
+  @Get('health')
+  getHealth() {
+    return { status: 'ok', timestamp: new Date().toISOString() };
+  }
+
   @Get('currencies')
   async getCurrencies() {
     return this.currencyService.getCurrencies();
