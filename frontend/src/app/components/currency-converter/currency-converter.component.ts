@@ -144,7 +144,15 @@ export class CurrencyConverterComponent implements OnInit {
       error: (error) => {
         console.error('Error converting currency:', error);
         this.loading = false;
-        alert('Error converting currency. Please try again.');
+        
+        // More helpful error message
+        if (error.status === 0) {
+          alert('⚠️ Unable to connect to server.\n\nThe server might be waking up (takes ~30 seconds on free tier). Please try again in a moment.');
+        } else if (error.status === 401) {
+          alert('⚠️ API authentication error. Please contact support.');
+        } else {
+          alert('Error converting currency. Please try again.');
+        }
       }
     });
   }
