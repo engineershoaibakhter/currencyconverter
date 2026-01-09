@@ -5,33 +5,42 @@
 }
 
 .history-card {
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 
   mat-card-header {
-    padding: 1.5rem 1.5rem 1rem;
+    padding: 2rem 2rem 1rem;
+    background: linear-gradient(135deg, rgba(244, 114, 182, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
     mat-card-title {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: #764ba2;
+      gap: 0.75rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
       margin-bottom: 0.5rem;
 
       .title-icon {
-        font-size: 2rem;
-        width: 2rem;
-        height: 2rem;
+        font-size: 2.2rem;
+        width: 2.2rem;
+        height: 2.2rem;
+        color: #f472b6;
+        filter: drop-shadow(0 0 10px rgba(244, 114, 182, 0.5));
       }
     }
 
     mat-card-subtitle {
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 
@@ -44,15 +53,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 2rem;
   flex-wrap: wrap;
   gap: 1rem;
 
   mat-chip-set {
     mat-chip {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
       color: white;
-      font-weight: 500;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 0 0.5rem;
 
       mat-icon {
         color: white;
@@ -61,8 +72,14 @@
   }
 
   .clear-button {
-    border-radius: 8px;
-    font-weight: 500;
+    border-radius: 10px;
+    font-weight: 600;
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #f87171;
+    
+    &:hover {
+      background: rgba(239, 68, 68, 0.1);
+    }
   }
 }
 
@@ -71,27 +88,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1.5rem;
+  padding: 4rem 2rem;
   text-align: center;
-  color: #999;
 
   mat-icon {
-    font-size: 4rem;
-    width: 4rem;
-    height: 4rem;
-    margin-bottom: 1rem;
-    opacity: 0.5;
+    font-size: 5rem;
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.2);
   }
 
   h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.3rem;
-    color: #666;
+    margin: 0 0 0.75rem 0;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
   }
 
   p {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -101,10 +119,12 @@
   .history-item {
     height: auto !important;
     padding: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
 
     .item-content {
       width: 100%;
-      padding: 1.5rem;
+      padding: 1.5rem 2rem;
     }
 
     .item-header {
@@ -116,30 +136,42 @@
       .currency-badges {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.75rem;
 
         .currency-chip {
-          font-weight: 600;
+          font-weight: 700;
           font-size: 0.9rem;
+          padding: 0.25rem 0.75rem;
+          border-radius: 8px;
 
           &.from-chip {
-            background: #e3f2fd;
-            color: #1976d2;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(96, 165, 250, 0.1) 100%);
+            color: #60a5fa;
+            border: 1px solid rgba(96, 165, 250, 0.3);
           }
 
           &.to-chip {
-            background: #f3e5f5;
-            color: #7b1fa2;
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.2) 0%, rgba(244, 114, 182, 0.1) 100%);
+            color: #f472b6;
+            border: 1px solid rgba(244, 114, 182, 0.3);
           }
         }
 
         .arrow-icon {
-          font-size: 1.2rem;
-          color: #999;
+          font-size: 1.3rem;
+          color: rgba(255, 255, 255, 0.4);
         }
       }
 
       .delete-button {
+        color: rgba(255, 255, 255, 0.4);
+        transition: all 0.2s ease;
+        
+        &:hover {
+          color: #f87171;
+          background: rgba(248, 113, 113, 0.1);
+        }
+        
         mat-icon {
           font-size: 1.2rem;
         }
@@ -152,10 +184,11 @@
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
-        padding: 1rem;
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        border-radius: 12px;
+        padding: 1.25rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
         margin-bottom: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
 
         .amount-block {
           flex: 1;
@@ -163,47 +196,62 @@
           flex-direction: column;
 
           .amount {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #333;
+            color: rgba(255, 255, 255, 0.9);
 
             &.highlight {
-              color: #764ba2;
+              background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
             }
           }
         }
 
         .equals-icon {
-          color: #999;
+          color: rgba(255, 255, 255, 0.3);
+          font-size: 1.5rem;
         }
       }
 
       .metadata {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.25rem;
 
         .meta-item {
           display: flex;
           align-items: center;
-          gap: 0.3rem;
+          gap: 0.4rem;
           font-size: 0.85rem;
-          color: #666;
+          color: rgba(255, 255, 255, 0.5);
+          padding: 0.35rem 0.75rem;
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 8px;
 
           mat-icon {
             font-size: 1rem;
             width: 1rem;
             height: 1rem;
-            color: #999;
+            color: #a78bfa;
           }
         }
       }
     }
 
     &:hover {
-      background: rgba(102, 126, 234, 0.02);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    
+    &:last-child {
+      border-bottom: none;
     }
   }
+}
+
+mat-divider {
+  border-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 // Mobile Responsive
@@ -213,16 +261,18 @@
   }
 
   .history-card {
+    border-radius: 20px;
+    
     mat-card-header {
-      padding: 1rem 1rem 0.5rem;
+      padding: 1.5rem 1.5rem 1rem;
 
       mat-card-title {
         font-size: 1.5rem;
 
         .title-icon {
-          font-size: 1.75rem;
-          width: 1.75rem;
-          height: 1.75rem;
+          font-size: 1.8rem;
+          width: 1.8rem;
+          height: 1.8rem;
         }
       }
 
@@ -233,7 +283,7 @@
   }
 
   .header-actions {
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     
     mat-chip-set mat-chip {
       font-size: 0.8rem;
@@ -247,13 +297,13 @@
   .history-list {
     .history-item {
       .item-content {
-        padding: 1rem;
+        padding: 1.25rem 1.5rem;
       }
 
       .item-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem;
+        gap: 0.75rem;
 
         .currency-badges {
           width: 100%;
@@ -261,20 +311,22 @@
 
         .delete-button {
           align-self: flex-end;
+          margin-top: -2rem;
         }
       }
 
       .item-details {
         .conversion-display {
           flex-direction: column;
-          gap: 0.5rem;
+          gap: 0.75rem;
+          padding: 1rem;
 
           .amount-block {
             width: 100%;
             text-align: center;
 
             .amount {
-              font-size: 1rem;
+              font-size: 1.1rem;
             }
           }
 
@@ -285,6 +337,7 @@
 
         .metadata {
           gap: 0.75rem;
+          justify-content: center;
 
           .meta-item {
             font-size: 0.8rem;
@@ -295,16 +348,16 @@
   }
 
   .empty-state {
-    padding: 2rem 1rem;
+    padding: 3rem 1.5rem;
 
     mat-icon {
-      font-size: 3rem;
-      width: 3rem;
-      height: 3rem;
+      font-size: 4rem;
+      width: 4rem;
+      height: 4rem;
     }
 
     h3 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     p {
