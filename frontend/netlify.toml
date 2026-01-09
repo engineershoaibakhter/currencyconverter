@@ -1,8 +1,19 @@
+[build]
+  publish = "dist/currency-converter/browser"
+  command = "npm run build"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# API routes go to functions first
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Everything else to Angular
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[build]
-  publish = "dist/currency-converter/browser"
-  command = "npm run build"

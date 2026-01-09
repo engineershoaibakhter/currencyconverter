@@ -35,13 +35,7 @@ export class CurrencyService {
   }
 
   convertCurrency(from: string, to: string, amount: number, date?: string): Observable<ConversionResult> {
-    let params = new HttpParams()
-      .set('from', from)
-      .set('to', to)
-      .set('amount', amount.toString());
-    if (date) {
-      params = params.set('date', date);
-    }
-    return this.http.get<ConversionResult>(`${this.apiUrl}/currency/convert`, { params });
+    const body = { from, to, amount, date };
+    return this.http.post<ConversionResult>(`${this.apiUrl}/currency/convert`, body);
   }
 }
