@@ -1,0 +1,46 @@
+<div class="app-container">
+  <!-- Header -->
+  <mat-toolbar class="app-header">
+    <div class="header-content">
+      <div class="logo-section">
+        <mat-icon class="logo-icon">account_balance</mat-icon>
+        <span class="app-title">{{ title }}</span>
+      </div>
+      <div class="subtitle">TA Solutions</div>
+    </div>
+  </mat-toolbar>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <mat-tab-group class="content-tabs" animationDuration="300ms">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">currency_exchange</mat-icon>
+          <span class="tab-label">Converter</span>
+        </ng-template>
+        <div class="tab-content">
+          <app-currency-converter></app-currency-converter>
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">history</mat-icon>
+          <span class="tab-label">History</span>
+        </ng-template>
+        <div class="tab-content">
+          <app-conversion-history></app-conversion-history>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>
+      <mat-icon class="footer-icon">copyright</mat-icon>
+      {{ currentYear }} TA Solutions | Currency Converter
+    </p>
+    <p class="footer-note">Powered by FreeCurrencyAPI</p>
+  </footer>
+</div>

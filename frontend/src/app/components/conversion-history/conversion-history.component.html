@@ -1,0 +1,92 @@
+<div class="history-container">
+  <mat-card class="history-card fade-in">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon class="title-icon">history</mat-icon>
+        Conversion History
+      </mat-card-title>
+      <mat-card-subtitle>
+        Your recent currency conversions (persisted locally)
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="header-actions" *ngIf="history.length > 0">
+        <mat-chip-set>
+          <mat-chip highlighted>
+            <mat-icon>assessment</mat-icon>
+            {{ history.length }} conversion{{ history.length !== 1 ? 's' : '' }}
+          </mat-chip>
+        </mat-chip-set>
+        <button 
+          mat-stroked-button 
+          color="warn"
+          (click)="clearAll()"
+          class="clear-button">
+          <mat-icon>delete_sweep</mat-icon>
+          Clear All
+        </button>
+      </div>
+
+      <mat-divider *ngIf="history.length > 0"></mat-divider>
+
+      <!-- Empty State -->
+      <div *ngIf="history.length === 0" class="empty-state">
+        <mat-icon>inbox</mat-icon>
+        <h3>No Conversion History</h3>
+        <p>Your conversion history will appear here after you perform conversions.</p>
+      </div>
+
+      <!-- History List -->
+      <mat-list *ngIf="history.length > 0" class="history-list">
+        <mat-list-item *ngFor="let item of history; let i = index" class="history-item">
+          <div class="item-content">
+            <div class="item-header">
+              <div class="currency-badges">
+                <mat-chip class="currency-chip from-chip">{{ item.from }}</mat-chip>
+                <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+                <mat-chip class="currency-chip to-chip">{{ item.to }}</mat-chip>
+              </div>
+              <button 
+                mat-icon-button 
+                color="warn"
+                (click)="deleteItem(item.id)"
+                matTooltip="Delete"
+                class="delete-button">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+
+            <div class="item-details">
+              <div class="conversion-display">
+                <div class="amount-block">
+                  <span class="amount">{{ formatCurrency(item.amount, item.from) }}</span>
+                </div>
+                <mat-icon class="equals-icon">drag_handle</mat-icon>
+                <div class="amount-block result">
+                  <span class="amount highlight">{{ formatCurrency(item.convertedAmount, item.to) }}</span>
+                </div>
+              </div>
+
+              <div class="metadata">
+                <div class="meta-item">
+                  <mat-icon>swap_horiz</mat-icon>
+                  <span>Rate: {{ item.rate ? item.rate.toFixed(6) : 'N/A' }}</span>
+                </div>
+                <div class="meta-item">
+                  <mat-icon>event</mat-icon>
+                  <span>{{ item.date | date:'mediumDate' }}</span>
+                </div>
+                <div class="meta-item">
+                  <mat-icon>schedule</mat-icon>
+                  <span>{{ formatDateTime(item.timestamp) }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <mat-divider *ngIf="i < history.length - 1"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

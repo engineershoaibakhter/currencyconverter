@@ -1,0 +1,26 @@
+{
+  "name": "currency-converter-ta-solutions",
+  "version": "1.0.0",
+  "description": "Full-stack currency converter with Angular 19 and NestJS",
+  "author": "TA Solutions",
+  "license": "MIT",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "start:backend": "cd backend && npm run start:dev",
+    "start:frontend": "cd frontend && npm start",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "build:all": "npm run build:backend && npm run build:frontend"
+  },
+  "keywords": [
+    "currency-converter",
+    "angular",
+    "nestjs",
+    "typescript",
+    "material-design"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR-USERNAME/currency-converter-ta-solutions"
+  }
+}
