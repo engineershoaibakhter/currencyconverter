@@ -185,27 +185,35 @@
 // Mobile Responsive
 @media (max-width: 600px) {
   .app-header {
-    padding: 0.5rem;
+    padding: 0.75rem 1rem;
 
     .header-content {
-      flex-direction: column;
-      gap: 0.25rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       text-align: center;
+      justify-content: center;
 
       .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
         .logo-icon {
-          font-size: 1.5rem;
-          width: 1.5rem;
-          height: 1.5rem;
+          font-size: 1.6rem;
+          width: 1.6rem;
+          height: 1.6rem;
         }
 
         .app-title {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
+          white-space: nowrap;
         }
       }
 
       .subtitle {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
       }
     }
   }
@@ -220,7 +228,7 @@
         }
 
         .mat-mdc-tab {
-          min-width: 120px;
+          min-width: 100px;
 
           .tab-label {
             display: none;
@@ -242,12 +250,36 @@
     padding: 1rem 0.5rem;
 
     p {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       flex-wrap: wrap;
     }
 
     .footer-note {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+// Extra small screens
+@media (max-width: 380px) {
+  .app-header {
+    .header-content {
+      .logo-section {
+        .logo-icon {
+          font-size: 1.4rem;
+          width: 1.4rem;
+          height: 1.4rem;
+        }
+
+        .app-title {
+          font-size: 1rem;
+        }
+      }
+
+      .subtitle {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.5rem;
+      }
     }
   }
 }
