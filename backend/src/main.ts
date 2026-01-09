@@ -6,7 +6,7 @@ async function bootstrap() {
   
   // Enable CORS for frontend
   app.enableCors({
-    origin: ['http://localhost:4200', 'https://your-deployed-frontend.netlify.app'],
+    origin: ['http://localhost:4200', 'https://currencyconverter181422.netlify.app'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
