@@ -2,7 +2,7 @@
   "name": "currency-converter-ta-solutions",
   "version": "1.0.0",
   "description": "Full-stack currency converter with Angular 19 and NestJS",
-  "author": "TA Solutions",
+  "author": "Engr Shoaib Akhter",
   "license": "MIT",
   "scripts": {
     "install:all": "cd backend && npm install && cd ../frontend && npm install",
@@ -18,9 +18,5 @@
     "nestjs",
     "typescript",
     "material-design"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/YOUR-USERNAME/currency-converter-ta-solutions"
-  }
+  ]
 }

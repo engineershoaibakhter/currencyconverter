@@ -13,9 +13,8 @@
     <mat-card-content>
       <div class="header-actions" *ngIf="history.length > 0">
         <mat-chip-set>
-          <mat-chip highlighted>
-            <mat-icon>assessment</mat-icon>
-            {{ history.length }} conversion{{ history.length !== 1 ? 's' : '' }}
+          <mat-chip highlighted class="summary-chip">
+            <span>{{ history.length }} conversion{{ history.length !== 1 ? 's' : '' }}</span>
           </mat-chip>
         </mat-chip-set>
         <button 

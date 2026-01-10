@@ -2,7 +2,7 @@
   "name": "currency-converter-backend",
   "version": "1.0.0",
   "description": "NestJS backend for currency converter",
-  "author": "TA Solutions",
+  "author": "Engr Shoaib Akhter",
   "private": true,
   "license": "MIT",
   "scripts": {

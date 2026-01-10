@@ -143,11 +143,17 @@ form {
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  color: #ffffff;
   
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+
+  mat-icon,
+  span {
+    color: #ffffff;
+  }
   
   &::before {
     content: '';
@@ -166,8 +172,16 @@ form {
   }
   
   mat-spinner {
-    margin-right: 0.5rem;
+      margin-right: 0.5rem;
+      color:#ffffff;
   }
+
+    .converting {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: inherit;
+    }
   
   &:hover:not(:disabled) {
     transform: translateY(-3px);

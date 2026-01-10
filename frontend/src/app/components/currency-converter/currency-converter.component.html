@@ -86,9 +86,11 @@
           class="convert-button"
           [disabled]="converterForm.invalid || loading || loadingCurrencies">
           <mat-icon *ngIf="!loading">sync_alt</mat-icon>
-          <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
           <span *ngIf="!loading">Convert</span>
+          <div class="converting">
+          <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
           <span *ngIf="loading">Converting...</span>
+          </div>
         </button>
       </form>
 
