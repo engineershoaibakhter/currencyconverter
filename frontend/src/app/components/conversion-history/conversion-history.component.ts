@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { StorageService } from '../../services/storage.service';
 import { ConversionHistory } from '../../models/currency.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-conversion-history',
@@ -28,43 +29,27 @@ import { ConversionHistory } from '../../models/currency.model';
 })
 export class ConversionHistoryComponent implements OnInit, OnDestroy {
   history: ConversionHistory[] = [];
-  private intervalId: any;
+  private historySubscription?: Subscription;
 
   constructor(private storageService: StorageService) {}
 
   ngOnInit() {
-    this.loadHistory();
-    
-    // Listen for storage changes (in case of multiple tabs)
-    window.addEventListener('storage', () => {
-      this.loadHistory();
+    this.historySubscription = this.storageService.history$.subscribe(history => {
+      this.history = history;
     });
-    
-    // Poll for history updates every second (for same-tab updates)
-    this.intervalId = setInterval(() => {
-      this.loadHistory();
-    }, 1000);
   }
   
   ngOnDestroy() {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
-  }
-
-  loadHistory() {
-    this.history = this.storageService.getHistory();
+    this.historySubscription?.unsubscribe();
   }
 
   deleteItem(id: string) {
     this.storageService.deleteHistoryItem(id);
-    this.loadHistory();
   }
 
   clearAll() {
     if (confirm('Are you sure you want to clear all conversion history?')) {
       this.storageService.clearHistory();
-      this.loadHistory();
     }
   }
 
